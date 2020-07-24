@@ -5,7 +5,6 @@ import {
   GET_FAVORITES,
   DELETE_FAVORITE,
   LOADED_FAVORITES,
-  CLEAR_FAVORITES,
 } from "./types";
 import { returnErrors } from "./errorActions";
 import { tokenConfig } from "../actions/tokenConfig";

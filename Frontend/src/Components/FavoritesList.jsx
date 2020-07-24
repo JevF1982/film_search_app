@@ -7,7 +7,6 @@ const FavoritesList = () => {
   const [movieDetails, setMovieDetails] = useState([]);
 
   const isAuthenticated = useSelector((auth) => auth.auth.isAuthenticated);
-  const isLoading = useSelector((favorites) => favorites.favorites.isLoading);
 
   const favList = useSelector(
     (favorites) => favorites.favorites.favList.favList

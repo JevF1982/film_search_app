@@ -8,7 +8,7 @@
   "main": "app.js",
   "proxy": "http://localhost:3000/",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "build": "cd Frontend && npm run build",
     "install-client": "cd Frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"

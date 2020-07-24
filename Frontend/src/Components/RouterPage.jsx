@@ -17,7 +17,6 @@ export default function RouterPage() {
   const auth = useSelector((auth) => auth.auth);
   const alert = auth.isAuthenticated;
   const [toggle, setToggle] = useState(alert);
-  const isLoading = useSelector((favorites) => favorites.favorites.isLoading);
 
   useEffect(() => {
     setTimeout(() => {
