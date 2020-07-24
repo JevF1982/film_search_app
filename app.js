@@ -21,17 +21,25 @@ app.use("/api/favorites", favoriteRoute);
 
 // connect to db
 mongoose
-  .connect(process.env.MONGO_DB_CONNECTION, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  })
+  .connect(
+    process.env.MONGODB_URI ||
+      "mongodb+srv://Faust:werkgewoon@movie-search-database-yu8fx.gcp.mongodb.net/movie-search-database?retryWrites=true&w=majority",
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
+  )
   .then(() => console.log("DB Connected!"))
   .catch((err) => {
     console.log(`DB Connection Error:  + ${err.message}`);
   });
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV == "production") {
   app.use(express.static("Frontend/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  });
 }
 
 // listen on port
