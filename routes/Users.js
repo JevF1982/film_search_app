@@ -4,7 +4,7 @@ const {
   registerValidation,
   loginValidation,
 } = require("../validation/validation");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const verify = require("../routes/verifyToken");
 
