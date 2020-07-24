@@ -21,7 +21,7 @@ app.use("/api/favorites", favoriteRoute);
 
 // connect to db
 mongoose
-  .connect(process.env.MONGODB_URI || process.env.MONGO_DB_CONNECTION, {
+  .connect(process.env.MONGO_DB_CONNECTION, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   })
