@@ -55,7 +55,7 @@ const MovieDetails = () => {
 
   const movieStyle = {
     background: {
-      backgroundImage: `url(http://image.tmdb.org/t/p/w185//${movie.poster_path})`,
+      backgroundImage: `url(https://image.tmdb.org/t/p/w185//${movie.poster_path})`,
       maxWidth: "40vh",
       minHeight: "300px ",
       backgroundRepeat: "no-repeat",

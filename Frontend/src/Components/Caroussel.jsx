@@ -91,7 +91,7 @@ const Caroussel = () => {
             <Grid container spacing={1} key={item.id}>
               <Grid item xs={12}>
                 <img
-                  src={`http://image.tmdb.org/t/p/w185//${item.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w185//${item.poster_path}`}
                   alt="pic"
                   id="img-card"
                   onClick={() => handleClick(item.id)}
