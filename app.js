@@ -22,8 +22,7 @@ app.use("/api/favorites", favoriteRoute);
 // connect to db
 mongoose
   .connect(
-    process.env.MONGODB_URI ||
-      "mongodb+srv://Faust:werkgewoon@movie-search-database-yu8fx.gcp.mongodb.net/movie-search-database?retryWrites=true&w=majority",
+    "mongodb+srv://Faust:werkgewoon@movie-search-database-yu8fx.gcp.mongodb.net/movie-search-database?retryWrites=true&w=majority",
     {
       useUnifiedTopology: true,
       useNewUrlParser: true,
