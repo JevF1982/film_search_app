@@ -30,11 +30,9 @@ mongoose
     console.log(`DB Connection Error:  + ${err.message}`);
   });
 
-
-if(process.env.NODE_ENV === 'production'){
-app.use(express.static('Frontend/build'));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("Frontend/build"));
 }
-
 
 // listen on port
 
