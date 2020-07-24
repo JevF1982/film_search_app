@@ -89,7 +89,7 @@ const MovieCard = (props) => {
               alt="Movie Tile"
               width={200}
               height={300}
-              image={` http://image.tmdb.org/t/p/w185//${props.path}`}
+              image={` https://image.tmdb.org/t/p/w185//${props.path}`}
               title={props.title}
               style={{ objectFit: "scale-down" }}
             />
