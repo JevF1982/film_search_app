@@ -44,7 +44,9 @@ router.patch("/deletefavorites/:UserId", verify, async (req, res) => {
 
 router.get("/getfavorites/:UserId", verify, async (req, res) => {
   try {
-    const user = await User.findById(req.params.UserId, "favList");
+    const user = await User.findById(req.params.UserId, "favList").select(
+      "-_id"
+    );
     await res.json(user);
   } catch (err) {
     res.json({ message: err.message });

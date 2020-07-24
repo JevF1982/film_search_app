@@ -1,0 +1,134 @@
+html,
+.App {
+  background-color: #121212;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #121212 inset !important;
+  box-shadow: 0 0 0 30px #121212 inset !important;
+  -webkit-text-fill-color: white;
+}
+.MuiInputBase-input {
+  color: white !important;
+}
+
+#img-card {
+  cursor: pointer;
+}
+
+#home {
+  font-size: 50px;
+}
+
+.route-links {
+  color: white;
+}
+
+#search-bar {
+  margin: 65px;
+  background-color: black;
+}
+
+#search-field {
+  padding: 12px !important;
+  font-size: 22px !important;
+  color: black !important;
+}
+
+header {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #fff;
+  margin: 5px;
+  padding: 0px;
+}
+
+.header {
+  width: 100%;
+  background-color: #313131;
+}
+
+.container {
+  margin: 10px auto;
+  max-width: 1200px;
+  padding: 10px;
+}
+
+#search-bar {
+  position: relative;
+  margin-top: 180px;
+}
+
+.styles_navSocial__3JBh_ li {
+  display: none !important;
+}
+
+.MobileNav_mobileNavII__1QdXL .MobileNav_MoNavSocialII__2GPrC li {
+  display: none !important;
+}
+
+.MobileNav_MoNavSocial__ozVHB li {
+  display: none !important;
+}
+
+/////////////////////////////////////////////////////////:MOVIE DETAILS//////////////////////////////////////////////////////////////////:
+.movie-container {
+  flex-direction: column;
+  background-color: rgb(25, 25, 25);
+  align-items: center;
+  padding: 20px;
+
+  .movie-background {
+    margin-bottom: 15px;
+  }
+  .overlay {
+    width: 100vh;
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .movie-container {
+    margin: 150px 0 50px 0 !important;
+    background-color: rgb(18, 18, 18) !important;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    .movie-background {
+      margin-bottom: 0px;
+    }
+    .overlay {
+      visibility: initial;
+    }
+  }
+}
+hr {
+  display: none;
+}
+
+//////////////////////////////////////////////////////////////: Movie Card ///////////////////////////////////////////////////
+
+.moviecard-buttons:hover {
+  cursor: pointer;
+}
+
+////////////////////////////////////////////// favorite list /////////////////////////
+
+#favorite-header {
+  position: relative;
+  top: 120px;
+  margin-bottom: 140px;
+  display: flex;
+  justify-content: center;
+}
