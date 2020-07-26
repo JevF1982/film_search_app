@@ -56,7 +56,7 @@ const MovieDetails = () => {
   const movieStyle = {
     background: {
       backgroundImage: `url(https://image.tmdb.org/t/p/w185//${movie.poster_path})`,
-      maxWidth: "40vh",
+      maxWidth: "30vh",
       minHeight: "300px ",
       backgroundRepeat: "no-repeat",
 
@@ -67,7 +67,7 @@ const MovieDetails = () => {
 
     container: {
       display: "flex",
-      width: "100vw",
+
       justifyContent: "center",
       margin: "50px 0 50px 0",
     },
