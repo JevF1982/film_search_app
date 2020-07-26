@@ -34,7 +34,7 @@ input:-webkit-autofill:active {
 
 #search-field {
   padding: 12px !important;
-  font-size: 22px !important;
+  font-size: 15px !important;
   color: black !important;
 }
 
@@ -99,6 +99,9 @@ h1 {
 }
 
 @media screen and (min-width: 850px) {
+  #search-field {
+    font-size: 22px !important;
+  }
   .movie-container {
     margin: 150px 0 50px 0 !important;
     background-color: rgb(18, 18, 18) !important;

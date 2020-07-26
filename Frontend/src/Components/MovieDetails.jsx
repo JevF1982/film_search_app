@@ -40,15 +40,15 @@ const MovieDetails = () => {
     };
   }, [istoggled, getCheckedValue, movie.id]);
 
-  const handleFavorites = (movieId, userId, e) => {
+  const handleFavorites = async (movieId, userId, e) => {
     setIsToggled((prevIsToggled) => !prevIsToggled);
     if (e === "add") {
-      dispatch(addFavorites(movieId, userId));
+      await dispatch(addFavorites(movieId, userId));
       dispatch(getFavorites(userId));
       setButtonValue("add");
     } else {
       setButtonValue("delete");
-      dispatch(deleteFavorites(movieId, userId));
+      await dispatch(deleteFavorites(movieId, userId));
       dispatch(getFavorites(userId));
     }
   };
@@ -105,34 +105,55 @@ const MovieDetails = () => {
             AlertFunc(isAuthenticated, istoggled, buttonValue)
           }
           <div style={movieStyle.movieOverview}>
-            {movie.vote_average ? (
+            {isAuthenticated ? (
               <div>
-                {isAuthenticated ? (
-                  <Checkbox
-                    checked={checked || false}
-                    color="secondary"
-                    inputProps={{ "aria-label": "primary checkbox" }}
-                    style={{ marginBottom: "20px" }}
-                  />
-                ) : null}
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleFavorites(movie.id, userId, "add")}
-                  style={{ marginRight: "20px", marginBottom: "20px" }}
-                >
-                  Add to favorites
-                </Button>
-                <Button
-                  variant="contained"
+                <Checkbox
+                  checked={checked || false}
                   color="secondary"
-                  onClick={() => handleFavorites(movie.id, userId, "delete")}
-                  style={{ marginBottom: "20px" }}
-                >
-                  Delete from favorites
-                </Button>
+                  inputProps={{ "aria-label": "primary checkbox" }}
+                />
+                {!checked ? (
+                  <Button
+                    disabled={checked || false}
+                    variant="contained"
+                    size="small"
+                    color="primary"
+                    className="moviecard-buttons"
+                    onClick={() => handleFavorites(movie.id, userId, "add")}
+                  >
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Button
+                    size="small"
+                    color="secondary"
+                    disabled={!checked || false}
+                    variant="contained"
+                    className="moviecard-buttons"
+                    onClick={() =>
+                      handleFavorites(
+                        movie.id,
+                        isAuthenticated ? userId : null,
+                        "delete"
+                      )
+                    }
+                  >
+                    Delete from favorites
+                  </Button>
+                )}
               </div>
-            ) : null}
+            ) : (
+              <h4
+                style={{
+                  color: "yellow",
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                Log in or register to add to your favorite list
+              </h4>
+            )}
           </div>
         </div>
       </div>

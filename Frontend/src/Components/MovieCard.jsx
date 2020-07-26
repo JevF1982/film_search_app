@@ -11,7 +11,6 @@ import FadeIn from "react-fade-in";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getMovieDetails } from "../actions/movieActions";
-import { useLocation } from "react-router-dom";
 
 import {
   addFavorites,
@@ -21,7 +20,6 @@ import {
 import { AlertFunc } from "../Containers/AlertFunc";
 
 const MovieCard = (props) => {
-  const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((auth) => auth.auth.isAuthenticated);
@@ -60,8 +58,8 @@ const MovieCard = (props) => {
     history.push("/details");
   };
 
-  const handleFavorites = (movieId, userId) => {
-    dispatch(addFavorites(movieId, userId));
+  const handleFavorites = async (movieId, userId) => {
+    await dispatch(addFavorites(movieId, userId));
     dispatch(getFavorites(userId));
     setButtonValue("add");
     setIsToggled((prevIsToggled) => !prevIsToggled);
@@ -104,7 +102,8 @@ const MovieCard = (props) => {
               </Typography>
               <Typography
                 variant="body2"
-                style={{ color: "white", marginBottom: "40px" }}
+                style={{ margin: "30px 0 20px 0" }}
+                color="secondary"
                 component="h1"
               >
                 Rating : {props.rating}/10
@@ -115,42 +114,61 @@ const MovieCard = (props) => {
           {AlertFunc(isAuthenticated, istoggled, buttonValue)}
 
           <CardActions style={{ display: "flex", justifyContent: "center" }}>
-            {location.pathname !== "/favorites" ? (
+            {isAuthenticated ? (
               <div>
                 <Checkbox
                   checked={checked || false}
                   color="secondary"
                   inputProps={{ "aria-label": "primary checkbox" }}
                 />
-                <Button
-                  size="large"
-                  color="primary"
-                  className="moviecard-buttons"
-                  onClick={() => handleFavorites(props.id, userId, "add")}
-                >
-                  Add to favorites
-                </Button>{" "}
+                {!checked ? (
+                  <Button
+                    disabled={checked || false}
+                    variant="contained"
+                    size="small"
+                    color="primary"
+                    className="moviecard-buttons"
+                    onClick={() => handleFavorites(props.id, userId, "add")}
+                  >
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Button
+                    size="small"
+                    color="secondary"
+                    disabled={!checked || false}
+                    variant="contained"
+                    className="moviecard-buttons"
+                    onClick={() =>
+                      handleDelete(
+                        props.id,
+                        isAuthenticated ? userId : null,
+                        "delete"
+                      )
+                    }
+                  >
+                    Delete from favorites
+                  </Button>
+                )}
               </div>
-            ) : null}
+            ) : (
+              <h4
+                style={{
+                  color: "yellow",
+                  display: "flex",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                Log in or register to add to your favorite list
+              </h4>
+            )}
           </CardActions>
           <CardActions style={{ display: "flex", justifyContent: "center" }}>
             <Button
-              size="large"
-              color="primary"
-              className="moviecard-buttons"
-              onClick={() =>
-                handleDelete(
-                  props.id,
-                  isAuthenticated ? userId : null,
-                  "delete"
-                )
-              }
-            >
-              Delete from favorites
-            </Button>
-            <Button
-              size="large"
-              color="primary"
+              variant="contained"
+              size="small"
+              color="default"
               className="moviecard-buttons"
               onClick={() => handleClick(props.id)}
             >
