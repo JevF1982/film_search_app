@@ -195,11 +195,6 @@ export default function Login() {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link to="" variant="body2" className="route-links">
-                    Forgot password?
-                  </Link>
-                </Grid>
                 <Grid item>
                   <Link to="/register" className="route-links">
                     Don't have an account? Sign Up
